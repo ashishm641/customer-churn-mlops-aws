@@ -1,0 +1,10 @@
+# Phase 1 - Foundation & EDA
+# Only install what you need for Phase 1
+# New packages will be added as you reach new phases
+
+pandas
+numpy
+matplotlib
+seaborn
+jupyter
+scikit-learn
