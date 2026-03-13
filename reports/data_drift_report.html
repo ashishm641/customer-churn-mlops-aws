@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Drift Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        h1 { color: #333; }
+        .summary { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .alert { background: #ffe0e0; padding: 15px; border-radius: 8px; border-left: 4px solid #ff4444; margin: 20px 0; }
+        .ok { background: #e0ffe0; padding: 15px; border-radius: 8px; border-left: 4px solid #44ff44; margin: 20px 0; }
+        table { border-collapse: collapse; width: 100%; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        th { background: #4a90d9; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9f9f9; }
+        .drifted { color: #cc0000; font-weight: bold; }
+        .stable { color: #009900; }
+    </style>
+</head>
+<body>
+    <h1>Data Drift Report</h1>
+    <p>Comparing training data (reference) vs production data (current)</p>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <p><strong>Features analyzed:</strong> 30</p>
+        <p><strong>Features drifted:</strong> 5 (16.7%)</p>
+        <p><strong>Detection method:</strong> Kolmogorov-Smirnov test (threshold: p &lt; 0.05)</p>
+    </div>
+
+    <div class="ok">
+        <strong>NO SIGNIFICANT DRIFT — Model is still reliable</strong>
+    </div>
+
+    <h2>Feature Details</h2>
+    <table>
+        <tr><th>Feature</th><th>KS Statistic</th><th>P-Value</th><th>Status</th></tr>
+        <tr><td>MonthlyCharges</td><td>0.1651</td><td>0.000000</td><td class="drifted">DRIFTED</td></tr>
+        <tr><td>tenure</td><td>0.1229</td><td>0.000000</td><td class="drifted">DRIFTED</td></tr>
+        <tr><td>InternetService_Fiber optic</td><td>0.0866</td><td>0.000000</td><td class="drifted">DRIFTED</td></tr>
+        <tr><td>TotalCharges</td><td>0.0378</td><td>0.000085</td><td class="drifted">DRIFTED</td></tr>
+        <tr><td>InternetService_No</td><td>0.0317</td><td>0.001696</td><td class="drifted">DRIFTED</td></tr>
+        <tr><td>Dependents</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>gender</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>SeniorCitizen</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>PaperlessBilling</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>PhoneService</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>Partner</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>MultipleLines_No phone service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>MultipleLines_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>OnlineSecurity_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>OnlineSecurity_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>OnlineBackup_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>OnlineBackup_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>DeviceProtection_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>DeviceProtection_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>TechSupport_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>TechSupport_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>StreamingTV_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>StreamingTV_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>StreamingMovies_No internet service</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>StreamingMovies_Yes</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>Contract_One year</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>Contract_Two year</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>PaymentMethod_Credit card (automatic)</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>PaymentMethod_Electronic check</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+        <tr><td>PaymentMethod_Mailed check</td><td>0.0000</td><td>1.000000</td><td class="stable">Stable</td></tr>
+    </table>
+
+    <div class="summary" style="margin-top: 30px;">
+        <h2>What This Means</h2>
+        <p><strong>KS Statistic:</strong> Measures how different two distributions are (0 = identical, 1 = completely different)</p>
+        <p><strong>P-Value:</strong> Probability that the difference is due to random chance. Below 0.05 = statistically significant drift.</p>
+        <p><strong>Drifted:</strong> The feature's distribution in production data is significantly different from training data.</p>
+    </div>
+</body>
+</html>
