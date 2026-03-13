@@ -161,3 +161,4 @@ Response:
 | 4 | REST API (FastAPI) | `/predict` endpoint |
 | 5 | CI/CD (GitHub Actions) | Automated testing on every push |
 | 6 | Experiment tracking (MLflow) | Dashboard with all model runs |
+| 7 | Model monitoring (Data Drift) | Drift detection report |
