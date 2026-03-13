@@ -1,0 +1,43 @@
+# ---------------------------------------------------------------
+# GitHub Actions CI Pipeline
+# ---------------------------------------------------------------
+# WHAT: Runs our API tests automatically on GitHub's servers
+# WHEN: Every time code is pushed to main branch
+# WHY:  Catches bugs before they reach production
+# ---------------------------------------------------------------
+
+name: CI - Test API
+
+# TRIGGER: When does this run?
+on:
+  push:
+    branches: [main]       # Run when code is pushed to main
+  pull_request:
+    branches: [main]       # Run when a PR targets main
+
+# JOBS: What steps to perform?
+jobs:
+  test:
+    runs-on: ubuntu-latest   # Use a fresh Ubuntu machine on GitHub's cloud
+
+    steps:
+      # Step 1: Download our code onto the GitHub machine
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Step 3: Install our packages
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest httpx
+
+      # Step 4: Run the tests
+      - name: Run tests
+        run: python -m pytest tests/test_api.py -v

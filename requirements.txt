@@ -10,3 +10,7 @@ jupyter
 scikit-learn
 fastapi
 uvicorn
+pytest
+httpx
+fastapi
+uvicorn
