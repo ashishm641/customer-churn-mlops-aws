@@ -14,7 +14,7 @@ We integrated **MLflow** — an experiment tracking tool that records:
 - What scores (metrics) we got
 - The trained model itself (saved as an artifact)
 
-All viewable in a dashboard at http://127.0.0.1:5000.
+All viewable in a local MLflow dashboard (run `mlflow ui` to launch).
 
 ---
 
