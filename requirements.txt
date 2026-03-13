@@ -12,5 +12,5 @@ fastapi
 uvicorn
 pytest
 httpx
-fastapi
+mlflow
 uvicorn
